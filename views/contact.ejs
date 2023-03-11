@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="mt-5">Daftar Kontak</h2>
+      <a href="/contact/add" class="btn btn-primary mb-3">Tambah Data</a>
+
+      <% if (msg.length !== 0) { %>
+      <div class="alert alert-success" role="alert"><%= msg %></div>
+      <% } %>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (Array.isArray(contacts) && contacts.length > 0) { %>
+            <% contacts.forEach((contact, index) => { %>
+              <tr> 
+                <!-- ","nama":"Sandika Galih","nohp":"083246789032","email":"sandika@gmail.io","__v":0}, -->
+                <th scope="row"><%= index + 1 %></th>
+                <td><%= contact.nama %></td>
+                <td><%= contact.email %></td>
+                <td><%= contact.nohp %></td>
+                <td>
+                  <a href="/contact/<%= contact.nama %>" class="btn btn-success badge"> <i class="bi bi-info-circle"></i> detail</a>
+              </td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="4">
+                <div class="alert alert-info fw-bold" role="alert">
+                  No contacts found.
+                </div>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+      
+      
+      
+      
+      
+    </div>
+  </div>
+</div>

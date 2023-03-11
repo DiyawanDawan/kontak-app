@@ -1,0 +1,50 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Form Ubah Data Kontak</h1>
+      <% if (typeof errors !='undefined' ) { %>
+        <div class="alert alert-danger" role="alert">
+          <ul>
+            <% errors.forEach(error => { %>
+              <li>
+                <%= error.msg %>
+              </li>
+              <% }) %>
+          </ul>
+        </div>
+        <% } %>
+          <form method="post" action="/contact?_method=PUT">
+            <input type="hidden" name="_id" value="<%= contact._id %>"/>
+            <input type="hidden" name="oldNama" value="<%= contact.oldNama || contact.nama %>">
+            <div class="mb-3">
+              <label for="nama" class="form-label"></label>
+              <input type="text" class="form-control" id="nama" name="nama" required value="<%= contact.nama %>">
+            </div>
+            <!-- Star Fitur BAru -->
+            <div class="mb-3">
+              <label for="nim" class="form-label">Nim</label>
+              <input type="text" class="form-control" id="nim" name="nim" required value="<%= contact.nim %>">
+            </div>
+
+            <div class="mb-3">
+              <label for="kelas" class="form-label">Kelas</label>
+              <input type="text" class="form-control" id="kelas" name="kelas" required value="<%= contact.kelas %>">
+            </div>
+            <div class="mb-3">
+              <label for="semester" class="form-label">Semester</label>
+              <input type="text" class="form-control" id="semester" name="semester" required value="<%= contact.semester %>">
+            </div>
+            <!-- And -->
+            <div class="mb-3">
+              <label for="nohp" class="form-label">No Hp</label>
+              <input type="text" class="form-control" id="hohp" name="nohp" required value="<%= contact.nohp %>">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Eamil</label>
+              <input type="email" class="form-control" id="email" name="email" required value="<%= contact.email %>">
+            </div>
+            <button type="submit" class="btn btn-primary">Sipan Data</button>
+          </form>
+    </div>
+  </div>
+</div>
